@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gargi Foundation — Transforming Knowledge Into Accessible Truth</title>
+  <meta name="description" content="Gargi Foundation builds educational ecosystems that bridge research, technology, influencers, organizations, and communities for sustainable social impact.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lavender: '#FBA0E3',
+            orange: '#FDA172',
+            maroon: '#8B1538',
+            gold: '#C9A227',
+            cream: '#FFF8F5',
+            slate: '#2D2D3A',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --lavender: #FBA0E3;
+      --orange: #FDA172;
+      --maroon: #8B1538;
+      --gold: #C9A227;
+      --ink: #0F0F0F;
+      --ink-60: #5A5A5A;
+      --paper: #FFFEFD;
+      --line: #EDEAE6;
+    }
+
+    * { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #2D2D3A;
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: 'Playfair Display', serif; }
+    .display { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -0.02em; }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-lavender {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--lavender) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bg-gradient-soft { background: linear-gradient(180deg, #ffffff 0%, #FFF8F5 50%, #ffffff 100%); }
+    .bg-gradient-lavender { background: linear-gradient(135deg, rgba(251,160,227,0.08) 0%, rgba(253,161,114,0.08) 100%); }
+
+    .gradient-mesh {
+      background-image:
+        radial-gradient(at 20% 20%, rgba(251,160,227,0.15) 0px, transparent 50%),
+        radial-gradient(at 80% 20%, rgba(253,161,114,0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(251,160,227,0.1) 0px, transparent 50%);
+    }
+
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255,254,253,0.85);
+      border: 1px solid rgba(237,234,230,0.8);
+    }
+
+    .pill {
+      background: linear-gradient(135deg, rgba(251,160,227,0.12), rgba(253,161,114,0.12));
+      border: 1px solid rgba(251,160,227,0.25);
+    }
+
+    /* Cards */
+    .card-premium {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(45,45,58,0.06), 0 1px 4px rgba(45,45,58,0.04);
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      border: 1px solid rgba(45,45,58,0.04);
+    }
+    .card-premium:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(45,45,58,0.1), 0 8px 16px rgba(45,45,58,0.06);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--maroon) 0%, #A0204A 100%);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(139,21,56,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,21,56,0.35); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--maroon);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--maroon);
+    }
+    .btn-secondary:hover { background: var(--maroon); color: white; transform: translateY(-2px); }
+
+    /* Navigation */
+    .nav-link {
+      position: relative;
+      color: #2D2D3A;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--lavender), var(--orange));
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: var(--maroon); }
+
+    /* Reveal — scroll sections start hidden */
+    .reveal { opacity: 0; transform: translateY(40px); }
+
+    /* Decorative */
+    .shape-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4; pointer-events: none; }
+
+    /* Pillar sections */
+    .pillar-section { position: relative; overflow: hidden; }
+    .pillar-section:nth-child(odd)  { background: linear-gradient(180deg, #ffffff 0%, rgba(251,160,227,0.03) 100%); }
+    .pillar-section:nth-child(even) { background: linear-gradient(180deg, rgba(253,161,114,0.03) 0%, #ffffff 100%); }
+
+    /* Manifesto number */
+    .manifesto-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--maroon), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.3;
+    }
+
+    /* Forms */
+    .form-input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid rgba(45,45,58,0.08);
+      border-radius: 16px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #ffffff;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--lavender);
+      box-shadow: 0 0 0 4px rgba(251,160,227,0.15);
+    }
+    .form-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--maroon);
+      font-size: 0.95rem;
+    }
+
+    /* Blog card */
+    .blog-image-overlay { position: relative; overflow: hidden; border-radius: 16px 16px 0 0; }
+    .blog-image-overlay img { transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .blog-card:hover .blog-image-overlay img { transform: scale(1.08); }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--lavender), var(--orange)); border-radius: 4px; }
+
+    /* Tags */
+    .tag { display: inline-flex; align-items: center; padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
+    .tag-lavender { background: rgba(251,160,227,0.12); color: #B8459A; }
+    .tag-orange   { background: rgba(253,161,114,0.12); color: #C4703A; }
+
+    /* Divider */
+    .divider-gradient { height: 1px; background: linear-gradient(90deg, transparent, var(--lavender), var(--orange), transparent); }
+
+    /* Image frame */
+    .image-frame { border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(45,45,58,0.12); }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Quote */
+    .quote-mark { font-family: 'Playfair Display', serif; font-size: 6rem; line-height: 0; color: var(--lavender); opacity: 0.4; }
+
+    @media (max-width: 768px) {
+      .hero-heading { font-size: 2.5rem !important; }
+      .section-heading { font-size: 2rem !important; }
+    }
+
+    /* Sticky nav */
+    .nav-scrolled {
+      background: rgba(255,255,255,0.95) !important;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 20px rgba(45,45,58,0.06);
+    }
+
+    .text-balance { text-wrap: balance; }
+    ::selection { background: rgba(251,160,227,0.3); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────────── -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="#" class="flex items-center gap-3">
+          <img src="/images/logo.png" alt="Gargi Foundation" class="h-12 w-auto rounded-lg">
+        </a>
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#home"     class="nav-link text-sm tracking-wide">Home</a>
+          <a href="#projects" class="nav-link text-sm tracking-wide">Our Projects</a>
+          <a href="#blogs"    class="nav-link text-sm tracking-wide">Blogs</a>
+          <a href="#about"    class="nav-link text-sm tracking-wide">About Us</a>
+        </div>
+        <div class="hidden md:block">
+          <a href="#inquiry" class="btn-primary text-sm py-3 px-6">Get In Touch</a>
+        </div>
+        <button id="menuToggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE MENU ────────────────────────────────────────── -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 bg-white z-50 shadow-2xl p-8 flex flex-col">
+    <button id="menuClose" class="self-end p-2 rounded-lg hover:bg-gray-100 transition mb-8">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="flex flex-col gap-6">
+      <a href="#home"     class="text-xl font-display font-semibold text-slate hover:text-maroon transition">Home</a>
+      <a href="#projects" class="text-xl font-display font-semibold text-slate hover:text-maroon transition">Our Projects</a>
+      <a href="#blogs"    class="text-xl font-display font-semibold text-slate hover:text-maroon transition">Blogs</a>
+      <a href="#about"    class="text-xl font-display font-semibold text-slate hover:text-maroon transition">About Us</a>
+      <div class="pt-6 border-t border-gray-100">
+        <a href="#inquiry" class="btn-primary w-full justify-center">Get In Touch</a>
+      </div>
+    </div>
+  </div>
+  <div id="menuOverlay" class="fixed inset-0 bg-black/30 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <section id="home" class="pt-[120px] pb-16 md:pb-24 gradient-mesh">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-8">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+
+        <!-- Left -->
+        <div class="hero-content" style="opacity:0; transform:translateX(-40px);">
+          <div class="inline-flex items-center gap-2 pill rounded-full px-3 py-1.5 mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--lavender)] animate-pulse"></span>
+            <span class="text-[11px] uppercase tracking-widest mono text-neutral-700">Research-Driven • Nonprofit • Hyderabad</span>
+          </div>
+
+          <h1 class="display text-[48px] md:text-[64px] lg:text-[72px] leading-[0.92] text-balance">
+            Transforming Knowledge
+            <span class="relative inline-block">
+              Into Accessible
+              <svg class="absolute -bottom-3 left-0 w-full h-3" viewBox="0 0 300 12" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="heroGrad" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%"   stop-color="#FBA0E3"/>
+                    <stop offset="100%" stop-color="#FDA172"/>
+                  </linearGradient>
+                </defs>
+                <path d="M2 8c40-6 80-8 120-6s80 6 120 4 50-2 56-2" stroke="url(#heroGrad)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
+            Truth
+          </h1>
+
+          <p class="mt-7 text-[18px] md:text-[20px] leading-relaxed text-neutral-600 max-w-[56ch] text-balance">
+            Building educational ecosystems that bridge research, technology, influencers, organizations, and communities for sustainable social impact.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="#objectives" class="group inline-flex items-center gap-2 h-12 px-6 rounded-full bg-neutral-900 text-white text-[15px] font-medium hover:bg-neutral-800 transition">
+              Explore Our Mission
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#projects" class="inline-flex items-center h-12 px-6 rounded-full border border-neutral-300 text-[15px] font-medium hover:border-neutral-400 transition">
+              View Projects
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center gap-6 text-[13px] text-neutral-500">
+            <div class="flex -space-x-2">
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-[#FBA0E3] to-[#FDA172]"></div>
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-neutral-900"></div>
+              <div class="w-8 h-8 rounded-full border-2 border-white bg-neutral-200"></div>
+            </div>
+            <span>Trusted by educators, researchers &amp; 50+ community partners</span>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="hero-image relative" style="opacity:0; transform:translateX(40px);">
+          <div class="relative aspect-[4/3] rounded-[24px] overflow-hidden bg-neutral-100">
+            <img src="/images/hero-research.jpg" alt="Research and education" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 glass rounded-2xl p-4 shadow-xl max-w-[220px]">
+            <div class="text-[11px] uppercase tracking-widest mono text-neutral-500 mb-1">Live Database</div>
+            <div class="text-[28px] display leading-none">12,847</div>
+            <div class="text-[13px] text-neutral-600 mt-1">Verified sources indexed</div>
+          </div>
+          <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full blur-3xl pointer-events-none"
+               style="background: radial-gradient(circle, rgba(251,160,227,0.4), transparent 70%)"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OBJECTIVES ─────────────────────────────────────────── -->
+  <section id="objectives" class="py-24 lg:py-32 bg-gradient-soft relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+        <div class="tag tag-orange mb-4">Our Mission</div>
+        <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-slate mb-6">Overall Objectives</h2>
+        <p class="text-gray-600 text-lg">We are committed to creating a world where knowledge flows freely, truth is verifiable, and education empowers every community.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Build Comprehensive Databases</h3>
+          <p class="text-gray-600 leading-relaxed">Develop and maintain accessible, verified repositories of educational and research materials that serve as trusted knowledge foundations for communities worldwide.</p>
+        </div>
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Empower Truth-Telling Voices</h3>
+          <p class="text-gray-600 leading-relaxed">Equip influencers, educators, and content creators with verified research and tools to disseminate accurate information to their audiences effectively.</p>
+        </div>
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Support Grassroots Organizations</h3>
+          <p class="text-gray-600 leading-relaxed">Partner with local NGOs and community groups to amplify their impact through research-backed strategies, resources, and collaborative frameworks.</p>
+        </div>
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Direct Knowledge to Communities</h3>
+          <p class="text-gray-600 leading-relaxed">Create direct channels for research and verified information to reach underserved communities without intermediaries or barriers.</p>
+        </div>
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Verify Information Accuracy</h3>
+          <p class="text-gray-600 leading-relaxed">Establish rigorous truth verification protocols and frameworks to combat misinformation and ensure the integrity of shared knowledge.</p>
+        </div>
+
+        <div class="card-premium p-8 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lavender/20 to-orange/20 flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-maroon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate mb-3">Foster Media Literacy</h3>
+          <p class="text-gray-600 leading-relaxed">Develop educational programs that teach critical thinking, source evaluation, and media literacy skills across all age groups and demographics.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PILLARS ─────────────────────────────────────────────── -->
+  <section id="projects" class="relative">
+    <div class="text-center py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-6 reveal">
+        <div class="tag tag-lavender mb-4">Strategic Framework</div>
+        <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-slate mb-6">The Pillars of Execution</h2>
+        <p class="text-gray-600 text-lg">Our four-pillar approach ensures systematic, scalable, and sustainable impact across every layer of the knowledge ecosystem.</p>
+      </div>
+    </div>
+
+    <!-- Pillar 1 -->
+    <div class="pillar-section py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="manifesto-number">01</span>
+              <div class="h-px flex-1 bg-gradient-to-r from-lavender to-transparent"></div>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl font-bold text-slate mb-6">Database Development</h3>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">At the foundation of our mission lies the creation of comprehensive, searchable, and meticulously verified knowledge databases. We aggregate research from peer-reviewed journals, historical archives, field studies, and expert contributions into unified platforms accessible to all.</p>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">Our databases are designed with open-access principles, multilingual support, and intuitive interfaces that serve researchers, students, journalists, and curious minds alike. Every entry undergoes rigorous verification before publication.</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Open-access peer-reviewed research repositories</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Multilingual historical and cultural archives</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">AI-powered search and cross-reference systems</span></li>
+            </ul>
+          </div>
+          <div class="reveal order-1 lg:order-2">
+            <div class="image-frame aspect-[16/10]">
+              <img src="/images/pillar-database.jpg" alt="Database Development" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 2 -->
+    <div class="pillar-section py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <div class="image-frame aspect-[16/10]">
+              <img src="/images/pillar-influencers.jpg" alt="Empowering Influencers" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="manifesto-number">02</span>
+              <div class="h-px flex-1 bg-gradient-to-r from-orange to-transparent"></div>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl font-bold text-slate mb-6">Empowering Influencers</h3>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">In today's information landscape, influencers shape public discourse. We empower content creators, educators, and thought leaders with verified research, data visualization tools, and storytelling frameworks that transform complex truths into compelling narratives.</p>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">Through workshops, resource kits, and direct research partnerships, we enable influencers to become credible knowledge ambassadors who inspire informed communities and counter misinformation with evidence-based content.</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Verified research briefs for content creators</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Data storytelling and visualization workshops</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Fact-checking partnerships and credibility networks</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 3 -->
+    <div class="pillar-section py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="manifesto-number">03</span>
+              <div class="h-px flex-1 bg-gradient-to-r from-lavender to-transparent"></div>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl font-bold text-slate mb-6">Supporting Organizations</h3>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">Nonprofits, educational institutions, and community organizations are the backbone of sustainable social change. We provide these organizations with research infrastructure, capacity-building programs, and collaborative networks that amplify their reach and effectiveness.</p>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">From grant-writing support to impact measurement frameworks, we ensure that grassroots organizations have access to the same caliber of resources as large institutions, leveling the playing field for community-driven change.</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Research capacity building and training</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Impact measurement and evaluation frameworks</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-lavender/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Collaborative networks and resource sharing</span></li>
+            </ul>
+          </div>
+          <div class="reveal order-1 lg:order-2">
+            <div class="image-frame aspect-[16/10]">
+              <img src="/images/pillar-organizations.jpg" alt="Supporting Organizations" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 4 -->
+    <div class="pillar-section py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <div class="image-frame aspect-[16/10]">
+              <img src="/images/pillar-audience.jpg" alt="Direct to Audience" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="reveal">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="manifesto-number">04</span>
+              <div class="h-px flex-1 bg-gradient-to-r from-orange to-transparent"></div>
+            </div>
+            <h3 class="font-display text-3xl lg:text-4xl font-bold text-slate mb-6">Direct to Audience</h3>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">Knowledge should never be trapped behind paywalls or academic barriers. Our direct-to-audience initiatives bring research findings, historical truths, and verified information straight to the people who need it most—through podcasts, documentaries, community workshops, and digital platforms.</p>
+            <p class="text-gray-600 text-lg leading-relaxed mb-8">We believe in meeting communities where they are, adapting our delivery methods to local languages, cultural contexts, and accessibility needs. Every person deserves access to the truth, regardless of their background or location.</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Community workshops and town halls</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Documentary films and podcast series</span></li>
+              <li class="flex items-start gap-3"><div class="w-6 h-6 rounded-full bg-orange/20 flex items-center justify-center flex-shrink-0 mt-0.5"><svg class="w-3 h-3 text-maroon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></div><span class="text-gray-700">Localized digital platforms and mobile apps</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUTH VERIFICATION ──────────────────────────────────── -->
+  <section id="truth" class="py-24 lg:py-32 bg-slate relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+        <div class="tag tag-orange mb-4 bg-white/10 text-orange border border-orange/20">Manifesto</div>
+        <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-white mb-6">Truth Verification</h2>
+        <p class="text-gray-300 text-lg">In an age of information overload, the ability to distinguish truth from falsehood is not just a skill—it is a civic imperative. Our truth verification framework serves as a modern manifesto for intellectual integrity.</p>
+      </div>
+
+      <div class="mb-20 reveal">
+        <h3 class="font-display text-2xl font-bold text-white mb-10 flex items-center gap-4">
+          <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-lavender to-orange flex items-center justify-center text-slate font-bold text-lg">1</span>
+          Core Pillars of Truth Verification
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition duration-300">
+            <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center mb-5"><svg class="w-6 h-6 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <h4 class="font-display text-xl font-bold text-white mb-3">Source Integrity</h4>
+            <p class="text-gray-400 leading-relaxed">Every claim must be traceable to its original source. We prioritize primary documents, peer-reviewed research, and firsthand testimony over secondhand reporting.</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition duration-300">
+            <div class="w-12 h-12 rounded-xl bg-orange/20 flex items-center justify-center mb-5"><svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg></div>
+            <h4 class="font-display text-xl font-bold text-white mb-3">Cross-Verification</h4>
+            <p class="text-gray-400 leading-relaxed">No single source holds the monopoly on truth. We cross-reference claims across multiple independent sources, languages, and cultural contexts before validation.</p>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition duration-300">
+            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-5"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <h4 class="font-display text-xl font-bold text-white mb-3">Temporal Context</h4>
+            <p class="text-gray-400 leading-relaxed">Truth exists within time. We examine the historical moment, prevailing conditions, and evolving understanding that shaped each piece of information.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-20 reveal">
+        <h3 class="font-display text-2xl font-bold text-white mb-10 flex items-center gap-4">
+          <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange to-lavender flex items-center justify-center text-slate font-bold text-lg">2</span>
+          Common Frameworks of False Information
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="flex gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><div><h4 class="font-semibold text-white mb-2">Cherry-Picked Data</h4><p class="text-gray-400 text-sm leading-relaxed">Presenting selective statistics while omitting contradictory evidence to create a misleading narrative that appears factually grounded.</p></div></div>
+          <div class="flex gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><div><h4 class="font-semibold text-white mb-2">False Equivalence</h4><p class="text-gray-400 text-sm leading-relaxed">Drawing misleading parallels between fundamentally different situations to obscure truth and create artificial balance where none exists.</p></div></div>
+          <div class="flex gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><div><h4 class="font-semibold text-white mb-2">Emotional Manipulation</h4><p class="text-gray-400 text-sm leading-relaxed">Using fear, outrage, or tribal identity to bypass rational analysis and compel belief without evidentiary support.</p></div></div>
+          <div class="flex gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg></div><div><h4 class="font-semibold text-white mb-2">Authority Misattribution</h4><p class="text-gray-400 text-sm leading-relaxed">Citing experts out of context, fabricating credentials, or invoking institutional authority to lend false credibility to unsubstantiated claims.</p></div></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <h3 class="font-display text-2xl font-bold text-white mb-10 flex items-center gap-4">
+          <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-lavender to-orange flex items-center justify-center text-slate font-bold text-lg">3</span>
+          Actionable Steps to Discern Truth
+        </h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-lavender/30 flex items-center justify-center flex-shrink-0 font-bold text-lavender">1</div><div><h4 class="font-semibold text-white mb-1">Pause Before Sharing</h4><p class="text-gray-400 text-sm leading-relaxed">Resist the urge to immediately share emotionally charged content. Take time to verify the source, check the date, and look for corroborating evidence.</p></div></div>
+          <div class="flex items-start gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-orange/30 flex items-center justify-center flex-shrink-0 font-bold text-orange">2</div><div><h4 class="font-semibold text-white mb-1">Trace to Primary Sources</h4><p class="text-gray-400 text-sm leading-relaxed">Follow citations back to their origin. If an article references a study, read the study. If a quote is attributed, find the original speech or document.</p></div></div>
+          <div class="flex items-start gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 font-bold text-white">3</div><div><h4 class="font-semibold text-white mb-1">Examine the Publisher</h4><p class="text-gray-400 text-sm leading-relaxed">Investigate who is behind the information. What are their credentials? What is their track record? Do they have conflicts of interest or ideological biases?</p></div></div>
+          <div class="flex items-start gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-lavender/30 flex items-center justify-center flex-shrink-0 font-bold text-lavender">4</div><div><h4 class="font-semibold text-white mb-1">Check Multiple Perspectives</h4><p class="text-gray-400 text-sm leading-relaxed">Seek out viewpoints that challenge your existing beliefs. True understanding emerges from engaging with diverse, well-reasoned arguments.</p></div></div>
+          <div class="flex items-start gap-5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition duration-300"><div class="w-10 h-10 rounded-full bg-orange/30 flex items-center justify-center flex-shrink-0 font-bold text-orange">5</div><div><h4 class="font-semibold text-white mb-1">Distinguish Fact from Opinion</h4><p class="text-gray-400 text-sm leading-relaxed">Learn to recognize the difference between verifiable facts, informed analysis, and pure speculation. Not everything presented as news is factual reporting.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INQUIRY ─────────────────────────────────────────────── -->
+  <section id="inquiry" class="py-24 lg:py-32 bg-gradient-lavender relative">
+    <div class="shape-blob w-96 h-96 bg-lavender/10 top-0 right-0"></div>
+    <div class="shape-blob w-80 h-80 bg-orange/10 bottom-0 left-0"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div class="reveal">
+          <div class="tag tag-lavender mb-4">Start Your Inquiry</div>
+          <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-slate mb-6">Have a Question?<br>Let's Investigate Together.</h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">Our research team is ready to help you dig deeper into topics that matter. Whether you're questioning a historical narrative, analyzing an industry, or fact-checking a specific claim, submit your inquiry and we'll guide you toward verified answers.</p>
+          <div class="image-frame aspect-[16/10] mb-8">
+            <img src="/images/truth-verification.jpg" alt="Research Inquiry" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm border border-gray-100">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-lavender to-orange flex items-center justify-center">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="font-semibold text-slate">research@gargiprojects.org</div>
+              <div class="text-sm text-gray-500">Typical response within 48 hours</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <form id="inquiryForm" class="bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-gray-100" novalidate>
+            <h3 class="font-display text-2xl font-bold text-slate mb-8">Submit Your Inquiry</h3>
+            <div class="space-y-6">
+
+              <div>
+                <label class="form-label" for="inq-topic">What specific topic or historical event are you questioning?</label>
+                <textarea id="inq-topic" name="topic" class="form-input" rows="3" placeholder="Describe the topic or event you'd like us to investigate..." required></textarea>
+                <p class="text-red-500 text-xs mt-1 hidden" data-error="inq-topic">Please describe the topic.</p>
+              </div>
+
+              <div>
+                <label class="form-label" for="inq-industry">Which industry or field do you want to analyze?</label>
+                <select id="inq-industry" name="industry" class="form-input" required>
+                  <option value="">Select a field...</option>
+                  <option value="Education & Academia">Education &amp; Academia</option>
+                  <option value="Healthcare & Medicine">Healthcare &amp; Medicine</option>
+                  <option value="Technology & AI">Technology &amp; AI</option>
+                  <option value="Media & Journalism">Media &amp; Journalism</option>
+                  <option value="History & Archaeology">History &amp; Archaeology</option>
+                  <option value="Public Policy & Governance">Public Policy &amp; Governance</option>
+                  <option value="Environment & Climate">Environment &amp; Climate</option>
+                  <option value="Economics & Finance">Economics &amp; Finance</option>
+                  <option value="Other">Other</option>
+                </select>
+                <p class="text-red-500 text-xs mt-1 hidden" data-error="inq-industry">Please select a field.</p>
+              </div>
+
+              <div>
+                <label class="form-label" for="inq-claim">What particular claim do you want to fact-check?</label>
+                <textarea id="inq-claim" name="claim" class="form-input" rows="3" placeholder="Paste or describe the specific claim you'd like us to verify..." required></textarea>
+                <p class="text-red-500 text-xs mt-1 hidden" data-error="inq-claim">Please enter the claim to verify.</p>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="form-label" for="inq-name">Your Name</label>
+                  <input type="text" id="inq-name" name="name" class="form-input" placeholder="Full name" required>
+                  <p class="text-red-500 text-xs mt-1 hidden" data-error="inq-name">Please enter your name.</p>
+                </div>
+                <div>
+                  <label class="form-label" for="inq-email">Email Address</label>
+                  <input type="email" id="inq-email" name="email" class="form-input" placeholder="you@example.com" required>
+                  <p class="text-red-500 text-xs mt-1 hidden" data-error="inq-email">Please enter a valid email.</p>
+                </div>
+              </div>
+
+              <button type="submit" id="inqSubmitBtn" class="btn-primary w-full justify-center py-4 text-lg">
+                <span id="inqBtnText">Submit Inquiry</span>
+                <svg id="inqBtnArrow" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <svg id="inqBtnSpinner" class="w-5 h-5 animate-spin hidden" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+              </button>
+
+            </div>
+
+            <!-- Success -->
+            <div id="inqSuccess" class="hidden mt-6 p-5 rounded-2xl border border-green-200 bg-green-50 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-green-800 text-sm">Inquiry submitted successfully!</p>
+                <p class="text-green-700 text-sm mt-1">Thank you! Our research team will review your submission and respond within 48 hours.</p>
+              </div>
+            </div>
+
+            <!-- Error -->
+            <div id="inqError" class="hidden mt-6 p-5 rounded-2xl border border-red-200 bg-red-50 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 3a9 9 0 110 18A9 9 0 0112 3z"/></svg>
+              </div>
+              <div>
+                <p class="font-semibold text-red-800 text-sm">Something went wrong.</p>
+                <p class="text-red-700 text-sm mt-1">Please try again or email us directly at <a href="mailto:research@gargiprojects.org" class="underline font-semibold">research@gargiprojects.org</a></p>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BLOGS ───────────────────────────────────────────────── -->
+  <section id="blogs" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 reveal">
+        <div class="max-w-2xl">
+          <div class="tag tag-orange mb-4">Insights &amp; Analysis</div>
+          <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-slate mb-4">From Our Blog</h2>
+          <p class="text-gray-600 text-lg">Deep dives into the intersection of research, technology, education, and truth. Curated by our editorial team.</p>
+        </div>
+        <a href="#" class="btn-secondary mt-6 lg:mt-0 self-start" onclick="event.preventDefault(); alert('Full blog archive coming soon.');">
+          View All Articles
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <article class="blog-card card-premium overflow-hidden reveal">
+          <div class="blog-image-overlay aspect-[16/10]"><img src="/images/blog-ai.jpg" alt="AI & Education" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4"><span class="tag tag-lavender">AI &amp; Education</span><span class="text-xs text-gray-400">Jan 15, 2025</span></div>
+            <h3 class="font-display text-xl font-bold text-slate mb-3 hover:text-maroon transition cursor-pointer">How Artificial Intelligence Is Reshaping Access to Quality Education in Rural Communities</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Exploring the transformative potential of AI tutors, adaptive learning platforms, and automated translation in bridging the global education divide.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-maroon font-semibold text-sm hover:gap-3 transition-all" onclick="event.preventDefault(); alert('Full article coming soon.');">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </article>
+
+        <article class="blog-card card-premium overflow-hidden reveal">
+          <div class="blog-image-overlay aspect-[16/10]"><img src="/images/blog-media.jpg" alt="Media Literacy" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4"><span class="tag tag-orange">Media Literacy</span><span class="text-xs text-gray-400">Jan 8, 2025</span></div>
+            <h3 class="font-display text-xl font-bold text-slate mb-3 hover:text-maroon transition cursor-pointer">Teaching Critical Consumption: A Framework for Media Literacy in the Digital Age</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">A comprehensive guide to developing critical thinking skills that enable individuals to navigate the modern information ecosystem with confidence.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-maroon font-semibold text-sm hover:gap-3 transition-all" onclick="event.preventDefault(); alert('Full article coming soon.');">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </article>
+
+        <article class="blog-card card-premium overflow-hidden reveal">
+          <div class="blog-image-overlay aspect-[16/10]"><img src="/images/pillar-database.jpg" alt="Historical Analysis" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4"><span class="tag tag-lavender">Historical Analysis</span><span class="text-xs text-gray-400">Dec 28, 2024</span></div>
+            <h3 class="font-display text-xl font-bold text-slate mb-3 hover:text-maroon transition cursor-pointer">Unearthing Forgotten Narratives: How Archival Research Challenges Dominant Historical Accounts</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">The power of primary source research in revealing marginalized perspectives and building a more complete understanding of our shared past.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-maroon font-semibold text-sm hover:gap-3 transition-all" onclick="event.preventDefault(); alert('Full article coming soon.');">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </article>
+
+        <article class="blog-card card-premium overflow-hidden reveal">
+          <div class="blog-image-overlay aspect-[16/10]"><img src="/images/truth-verification.jpg" alt="Truth Verification" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4"><span class="tag tag-orange">Truth Verification</span><span class="text-xs text-gray-400">Dec 20, 2024</span></div>
+            <h3 class="font-display text-xl font-bold text-slate mb-3 hover:text-maroon transition cursor-pointer">The Anatomy of a Viral Lie: Deconstructing How Misinformation Spreads Across Platforms</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">An investigative breakdown of recent viral falsehoods, tracing their origin, amplification mechanisms, and the psychology behind their spread.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-maroon font-semibold text-sm hover:gap-3 transition-all" onclick="event.preventDefault(); alert('Full article coming soon.');">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </article>
+
+        <article class="blog-card card-premium overflow-hidden reveal">
+          <div class="blog-image-overlay aspect-[16/10]"><img src="/images/hero-research.jpg" alt="Research & Society" class="w-full h-full object-cover"></div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-4"><span class="tag tag-lavender">Research &amp; Society</span><span class="text-xs text-gray-400">Dec 12, 2024</span></div>
+            <h3 class="font-display text-xl font-bold text-slate mb-3 hover:text-maroon transition cursor-pointer">From Lab to Village: Closing the Gap Between Academic Research and Real-World Impact</h3>
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">Why groundbreaking research often fails to reach the communities that need it most—and what we can do to bridge that devastating divide.</p>
+            <a href="#" class="inline-flex items-center gap-2 text-maroon font-semibold text-sm hover:gap-3 transition-all" onclick="event.preventDefault(); alert('Full article coming soon.');">Read Article <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Newsletter card -->
+        <div class="card-premium p-8 flex flex-col justify-center items-center text-center reveal bg-gradient-to-br from-maroon to-[#6B0F28]">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white mb-3">Stay Informed</h3>
+          <p class="text-gray-300 text-sm mb-6">Get our latest research, truth verification reports, and educational insights delivered to your inbox weekly.</p>
+          <form class="w-full" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Enter your email" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 mb-3 focus:outline-none focus:border-lavender">
+            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-lavender to-orange text-slate font-bold hover:opacity-90 transition">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ───────────────────────────────────────────────── -->
+  <section id="about" class="py-24 lg:py-32 bg-gradient-soft relative">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <div class="image-frame aspect-[16/10]">
+            <img src="/images/truth-verification.jpg" alt="Gargi Foundation" class="w-full h-full object-cover">
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="tag tag-lavender mb-4">About Us</div>
+          <h2 class="section-heading font-display text-4xl lg:text-5xl font-bold text-slate mb-6">A Research-Driven Ecosystem for Truth</h2>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">Gargi Foundation is a research-driven, educational, collaborative ecosystem focused on knowledge dissemination, truth verification, and sustainable social impact. Named after the ancient Indian philosopher Gargi Vachaknavi—who fearlessly pursued truth through rigorous inquiry—our foundation carries forward that legacy of intellectual courage.</p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">We believe that knowledge is not the privilege of the few, but the right of all. By bridging the gap between academic research and grassroots communities, we create pathways for verified information to flow where it is needed most.</p>
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100"><div class="text-3xl font-display font-bold gradient-text mb-1">2019</div><div class="text-sm text-gray-500">Founded</div></div>
+            <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100"><div class="text-3xl font-display font-bold gradient-text mb-1">40+</div><div class="text-sm text-gray-500">Team Members</div></div>
+            <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100"><div class="text-3xl font-display font-bold gradient-text mb-1">120+</div><div class="text-sm text-gray-500">Research Papers</div></div>
+            <div class="p-5 bg-white rounded-2xl shadow-sm border border-gray-100"><div class="text-3xl font-display font-bold gradient-text mb-1">25+</div><div class="text-sm text-gray-500">Partner NGOs</div></div>
+          </div>
+          <div class="p-6 bg-white rounded-2xl border-l-4 border-maroon shadow-sm">
+            <div class="quote-mark">"</div>
+            <p class="text-gray-700 italic text-lg leading-relaxed -mt-4">The pursuit of truth is not an academic exercise—it is a moral obligation. At Gargi Foundation, we are committed to building the infrastructure that makes truth accessible to every human being.</p>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-maroon to-gold flex items-center justify-center text-white font-bold text-sm">GF</div>
+              <div><div class="font-semibold text-slate text-sm">Gargi Foundation Leadership</div><div class="text-xs text-gray-500">Hyderabad, India</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────── -->
+  <footer class="bg-slate pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="lg:col-span-1">
+          <img src="/images/logo.png" alt="Gargi Foundation" class="h-16 w-auto rounded-lg mb-6">
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">Transforming knowledge into accessible truth. Building educational ecosystems for sustainable social impact.</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-lavender/20 transition" onclick="event.preventDefault();"><svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-lavender/20 transition" onclick="event.preventDefault();"><svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-lavender/20 transition" onclick="event.preventDefault();"><svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#home"      class="text-gray-400 hover:text-lavender transition text-sm">Home</a></li>
+            <li><a href="#projects"  class="text-gray-400 hover:text-lavender transition text-sm">Our Projects</a></li>
+            <li><a href="#blogs"     class="text-gray-400 hover:text-lavender transition text-sm">Blogs</a></li>
+            <li><a href="#about"     class="text-gray-400 hover:text-lavender transition text-sm">About Us</a></li>
+            <li><a href="#inquiry"   class="text-gray-400 hover:text-lavender transition text-sm">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-6">Focus Areas</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Truth Verification</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Media Literacy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Research Archives</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Community Programs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Partner Network</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-display font-bold text-white mb-6">Contact Us</h4>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3"><svg class="w-5 h-5 text-lavender flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span class="text-gray-400 text-sm">Kukatpally, Hyderabad<br>Telangana, India – 500085</span></div>
+            <div class="flex items-center gap-3"><svg class="w-5 h-5 text-lavender flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span class="text-gray-400 text-sm">research@gargiprojects.org</span></div>
+            <div class="flex items-center gap-3"><svg class="w-5 h-5 text-lavender flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-gray-400 text-sm">gargiprojects.org</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="divider-gradient mb-8"></div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2025 Gargi Foundation. All rights reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-500 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-lavender transition text-sm" onclick="event.preventDefault();">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── ALL SCRIPTS ─────────────────────────────────────────── -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+
+      // ── GSAP ────────────────────────────────────────────────
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero — gsap.TO (not from) because elements start opacity:0 via inline style
+      gsap.to('.hero-content', {
+        opacity: 1, x: 0, duration: 1.0, ease: 'power3.out', delay: 0.15, clearProps: 'transform'
+      });
+      gsap.to('.hero-image', {
+        opacity: 1, x: 0, duration: 1.0, ease: 'power3.out', delay: 0.4, clearProps: 'transform'
+      });
+
+      // Scroll reveal for everything below the fold
+      document.querySelectorAll('.reveal').forEach(function (el, i) {
+        gsap.to(el, {
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
+          opacity: 1, y: 0, duration: 0.75, ease: 'power3.out', delay: (i % 3) * 0.08
+        });
+      });
+
+      // ── NAVBAR ──────────────────────────────────────────────
+      var navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function () {
+        navbar.classList.toggle('nav-scrolled', window.scrollY > 50);
+      });
+
+      // ── MOBILE MENU ─────────────────────────────────────────
+      var menuToggle  = document.getElementById('menuToggle');
+      var menuClose   = document.getElementById('menuClose');
+      var mobileMenu  = document.getElementById('mobileMenu');
+      var menuOverlay = document.getElementById('menuOverlay');
+
+      function openMenu() {
+        mobileMenu.classList.add('open');
+        menuOverlay.classList.remove('hidden');
+        setTimeout(function () { menuOverlay.classList.add('opacity-100'); }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        menuOverlay.classList.remove('opacity-100');
+        setTimeout(function () { menuOverlay.classList.add('hidden'); }, 300);
+        document.body.style.overflow = '';
+      }
+      menuToggle.addEventListener('click', openMenu);
+      menuClose.addEventListener('click', closeMenu);
+      menuOverlay.addEventListener('click', closeMenu);
+      mobileMenu.querySelectorAll('a').forEach(function (l) { l.addEventListener('click', closeMenu); });
+
+      // ── SMOOTH SCROLL ────────────────────────────────────────
+      document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          var href = this.getAttribute('href');
+          if (href && href.length > 1) {
+            e.preventDefault();
+            var target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // ── EMAILJS ─────────────────────────────────────────────
+      // ⚠️  PASTE YOUR PUBLIC KEY BELOW
+      // Get it from: https://dashboard.emailjs.com/admin/account
+      emailjs.init({ publicKey: 'SHHn404CLYyZ9bL-x' });
+
+      var SERVICE_ID  = 'service_cxmjih7';
+      var TEMPLATE_ID = 'template_6nqj8gp';
+
+      function getEl(id) { return document.getElementById(id); }
+
+      function showFieldError(fieldId, show) {
+        var el = document.querySelector('[data-error="' + fieldId + '"]');
+        if (el) el.classList.toggle('hidden', !show);
+      }
+
+      function setLoading(on) {
+        var btn     = getEl('inqSubmitBtn');
+        var text    = getEl('inqBtnText');
+        var arrow   = getEl('inqBtnArrow');
+        var spinner = getEl('inqBtnSpinner');
+        btn.disabled      = on;
+        btn.style.opacity = on ? '0.75' : '1';
+        text.textContent  = on ? 'Sending…' : 'Submit Inquiry';
+        arrow.classList.toggle('hidden', on);
+        spinner.classList.toggle('hidden', !on);
+      }
+
+      function validateForm() {
+        var ok = true;
+        [
+          { id: 'inq-topic',    fn: function(v){ return v.trim().length > 0; } },
+          { id: 'inq-industry', fn: function(v){ return v !== ''; } },
+          { id: 'inq-claim',    fn: function(v){ return v.trim().length > 0; } },
+          { id: 'inq-name',     fn: function(v){ return v.trim().length > 0; } },
+          { id: 'inq-email',    fn: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); } },
+        ].forEach(function (f) {
+          var el  = document.getElementById(f.id);
+          var bad = !f.fn(el.value);
+          showFieldError(f.id, bad);
+          el.style.borderColor = bad ? '#ef4444' : '';
+          if (bad) ok = false;
+        });
+        return ok;
+      }
+
+      // Live clear on input
+      ['inq-topic','inq-industry','inq-claim','inq-name','inq-email'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('input', function () {
+          showFieldError(id, false);
+          this.style.borderColor = '';
+        });
+      });
+
+      var form = document.getElementById('inquiryForm');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          getEl('inqSuccess').classList.add('hidden');
+          getEl('inqError').classList.add('hidden');
+          if (!validateForm()) return;
+          setLoading(true);
+
+          var now = new Date();
+          var timeStr = now.toLocaleString('en-IN', {
+            weekday: 'short', year: 'numeric', month: 'short',
+            day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+          });
+
+          // Variable names must match your EmailJS template exactly
+          var params = {
+            name:     getEl('inq-name').value.trim(),
+            email:    getEl('inq-email').value.trim(),
+            reply_to: getEl('inq-email').value.trim(),
+            topic:    getEl('inq-topic').value.trim(),
+            industry: getEl('inq-industry').value,
+            claim:    getEl('inq-claim').value.trim(),
+            time:     timeStr,
+          };
+
+          emailjs.send(SERVICE_ID, TEMPLATE_ID, params)
+            .then(function () {
+              setLoading(false);
+              getEl('inqSuccess').classList.remove('hidden');
+              getEl('inqSuccess').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              form.reset();
+              ['inq-topic','inq-industry','inq-claim','inq-name','inq-email'].forEach(function (id) {
+                document.getElementById(id).style.borderColor = '';
+              });
+            })
+            .catch(function (err) {
+              setLoading(false);
+              getEl('inqError').classList.remove('hidden');
+              getEl('inqError').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              console.error('EmailJS error:', JSON.stringify(err));
+            });
+        });
+      }
+
+    }); // end DOMContentLoaded
+  </script>
+
+</body>
+</html>
